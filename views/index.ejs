@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>JKR Club Home</title>
+      <script src="https://cdn.tailwindcss.com"></script>
+      <script type="module" defer src="/js/homePage.js"></script>
+   </head>
+   <body
+      class="bg-gradient-to-br from-gray-950 via-slate-900 to-gray-800 text-white min-h-screen font-sans tracking-wide"
+   >
+      <div class="max-w-6xl mx-auto py-10 px-6">
+         <h3 class="mb-4 text-rose-400"><%- include("partials/errors") %></h3>
+         <h1
+            class="text-4xl font-extrabold text-center mb-10 bg-clip-text text-transparent bg-gradient-to-r from-rose-500 to-purple-400 drop-shadow-md"
+         >
+            🌹 JKR Club Messages
+         </h1>
+
+         <% if (user) { %>
+         <!-- User Card and Quick Actions Side by Side -->
+         <div
+            class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4"
+         >
+            <!-- User Card -->
+            <div
+               class="flex items-center bg-gradient-to-r from-slate-800 to-gray-900 rounded-2xl p-6 shadow-lg w-full sm:w-auto"
+            >
+               <div
+                  class="bg-rose-600 w-16 h-16 rounded-full flex items-center justify-center text-3xl font-bold text-white ring-4 ring-rose-400/40"
+               >
+                  <%= user.full_name[0].toUpperCase() %>
+               </div>
+               <div class="ml-5">
+                  <h2 class="text-2xl font-bold"><%= user.full_name %></h2>
+                  <p class="text-sm text-gray-400">@<%= user.username %></p>
+                  <p class="text-sm text-gray-400">📧 <%= user.email %></p>
+                  <% if (user.is_admin) { %>
+                  <span
+                     class="mt-2 inline-block px-3 py-1 text-xs bg-red-600 rounded-full"
+                     >🛡️ Admin</span
+                  >
+                  <% } else if (user.is_member) { %>
+                  <span
+                     class="mt-2 inline-block px-3 py-1 text-xs bg-purple-600 rounded-full"
+                     >🎫 Member</span
+                  >
+                  <% } else { %>
+                  <span
+                     class="mt-2 inline-block px-3 py-1 text-xs bg-gray-500 rounded-full"
+                     >🚫 Guest</span
+                  >
+                  <% } %>
+               </div>
+            </div>
+
+            <!-- Dropdown Quick Menu -->
+            <div class="relative">
+               <button
+                  onclick="toggleDropdown()"
+                  id="dropdownToggle"
+                  class="inline-flex justify-center w-full rounded-md bg-rose-600 px-4 py-2 text-sm font-medium hover:bg-rose-700 shadow"
+               >
+                  ⚡ Quick Actions
+                  <svg
+                     class="-mr-1 ml-2 h-5 w-5"
+                     viewBox="0 0 20 20"
+                     fill="currentColor"
+                  >
+                     <path
+                        d="M5.23 7.21a.75.75 0 011.06.02L10 11.293l3.71-4.06a.75.75 0 111.08 1.04l-4.25 4.655a.75.75 0 01-1.08 0L5.21 8.27a.75.75 0 01.02-1.06z"
+                     />
+                  </svg>
+               </button>
+
+               <div
+                  id="dropdownMenu"
+                  class="hidden absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-gray-800 shadow-lg ring-1 ring-black ring-opacity-5"
+               >
+                  <div class="py-1">
+                     <a
+                        href="/dashboard"
+                        class="block px-4 py-2 text-sm hover:bg-gray-700"
+                        >📋 Dashboard</a
+                     >
+                     <% if (!user.is_member) { %>
+                     <a
+                        href="/join-the-club"
+                        class="block px-4 py-2 text-sm hover:bg-gray-700"
+                        >➕ Join Club</a
+                     >
+                     <% } %>
+                     <a
+                        href="/create-message"
+                        class="block px-4 py-2 text-sm hover:bg-gray-700"
+                        >📝 Post Message</a
+                     >
+                     <a
+                        href="/logout"
+                        class="block px-4 py-2 text-sm text-red-400 hover:bg-gray-700"
+                        >🚪 Logout</a
+                     >
+                  </div>
+               </div>
+            </div>
+         </div>
+         <% } else { %>
+
+         <!-- Entry Buttons -->
+         <div class="flex flex-col sm:flex-row gap-4 justify-center mb-10">
+            <a
+               href="/signup"
+               class="px-5 py-2 bg-purple-700 hover:bg-purple-800 rounded shadow"
+               >Sign Up</a
+            >
+            <a
+               href="/login"
+               class="px-5 py-2 bg-rose-600 hover:bg-rose-700 rounded shadow"
+               >Login</a
+            >
+         </div>
+         <% } %>
+
+         <!-- Search -->
+         <form
+            action="/search"
+            method="GET"
+            class="flex flex-col sm:flex-row gap-3 mb-10"
+         >
+            <input
+               type="text"
+               name="searchTerm"
+               placeholder="Search messages..."
+               required
+               class="flex-1 px-4 py-2 rounded border border-gray-700 bg-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-rose-400"
+            />
+            <button
+               type="submit"
+               class="px-4 py-2 bg-rose-500 hover:bg-rose-600 rounded shadow"
+            >
+               🔍 Search
+            </button>
+         </form>
+
+         <!-- Messages -->
+         <% if (messages && messages.length > 0) { %>
+         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <% messages.forEach((msg) => { %>
+            <div
+               class="bg-gradient-to-br from-gray-800 to-slate-900 rounded-lg p-5 shadow hover:shadow-xl transition duration-200"
+            >
+               <h2 class="text-lg font-bold mb-2 text-rose-300">
+                  <%= msg.title %>
+               </h2>
+               <p class="mb-3 text-sm text-gray-300"><%= msg.content %></p>
+
+               <div class="text-xs text-gray-400 mb-2">
+                  <% if (user && (user.is_member || user.is_admin)) { %>
+                  <p>By: <strong><%= msg.authorName %></strong></p>
+                  <p>Posted: <%= msg.createdAtFormatted %></p>
+                  <% } else { %>
+                  <p class="blur-sm">By: <strong>Hidden</strong></p>
+                  <p class="blur-sm">Posted: Hidden</p>
+                  <% } %>
+               </div>
+
+               <% if (user && user.is_admin) { %>
+               <form action="/delete-message/<%= msg.id %>" method="POST">
+                  <button
+                     class="mt-2 px-3 py-1 bg-red-600 hover:bg-red-700 rounded shadow text-sm"
+                  >
+                     🗑️ Delete
+                  </button>
+               </form>
+               <% } %>
+            </div>
+            <% }); %>
+         </div>
+         <% } else { %>
+         <p class="text-center text-gray-400 mt-10">
+            No messages yet. Stay tuned!
+         </p>
+         <% } %>
+      </div>
+   </body>
+</html>

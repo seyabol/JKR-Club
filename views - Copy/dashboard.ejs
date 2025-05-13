@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>JKR Club Dashboard</title>
+      <link rel="stylesheet" href="/styles/style2.css" />
+      <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet" />
+   </head>
+   <body class="neon-theme">
+      <div class="dashboard-container">
+         <h1>👾 Welcome, <%= user.full_name %>!</h1>
+         <p style="text-align: center;">You are logged in as <strong><%= user.username %></strong></p>
+
+         <div class="role-badge" style="margin: 20px 0; text-align: center;">
+            <% if (user.is_admin) { %>
+               <p>🛡️ You are an <strong>Admin</strong></p>
+            <% } else if (user.is_member) { %>
+               <p>🎫 You are a <strong>Member</strong></p>
+            <% } else { %>
+               <p>🚫 You are currently a <strong>Guest</strong></p>
+            <% } %>
+         </div>
+
+         <div class="dashboard-buttons">
+            <a href="/create-message"><button class="glow-button">➕ New Message</button></a>
+            <a href="/logout"><button class="glow-button red">🚪 Logout</button></a>
+         </div>
+
+         <div class="messages-preview">
+            <h2>📝 Latest Messages</h2>
+            <p>Coming soon... (posts list with author visibility based on role)</p>
+         </div>
+
+         <a href="/join-the-club"><button class="glow-button">Become a Member</button></a>
+         <a href="/become-admin"><button class="glow-button red">Become Admin</button></a>
+      </div>
+   </body>
+</html>

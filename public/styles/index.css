@@ -1,0 +1,206 @@
+/* Red Rose & Dark Purple Modern Theme */
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600&display=swap");
+
+:root {
+  --bg-primary: #1a001f;
+  --bg-secondary: #2b0033;
+  --rose-red: #ff4d6d;
+  --rose-hover: #ff6b81;
+  --purple-accent: #9d4edd;
+  --font-light: #f3e5f5;
+  --muted: #bfa2c5;
+  --danger: #ff003c;
+  --danger-hover: #ff1a4f;
+  --blurred: rgba(255, 255, 255, 0.1);
+}
+
+body.redpurple-theme {
+  background-color: var(--bg-primary);
+  font-family: 'Orbitron', sans-serif;
+  color: var(--font-light);
+  margin: 0;
+  padding: 20px;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  background-color: var(--bg-secondary);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 0 25px var(--purple-accent);
+}
+
+.page-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 30px;
+  color: var(--rose-red);
+}
+
+.alert-msg {
+  text-align: center;
+  color: var(--danger);
+}
+
+.user-card {
+  display: inline-flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  background: var(--bg-primary);
+  border: 1px solid var(--purple-accent);
+  border-radius: 16px;
+  margin-bottom: 30px;
+}
+
+.user-avatar {
+  background-color: var(--rose-red);
+  color: white;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  font-size: 1.5rem;
+}
+
+.user-info h2 {
+  margin: 0;
+}
+
+.user-tag {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.badge {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  margin-top: 5px;
+  color: white;
+}
+
+.badge-admin {
+  background-color: var(--danger);
+}
+
+.badge-member {
+  background-color: var(--rose-red);
+}
+
+.badge-guest {
+  background-color: var(--muted);
+}
+
+.action-bar,
+.entry-buttons,
+.search-box {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.search-box input {
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  background: #3b0044;
+  color: white;
+  width: 60%;
+  max-width: 400px;
+}
+
+.search-box input:focus {
+  outline: 2px solid var(--purple-accent);
+  background-color: #4c0059;
+}
+
+.btn-primary,
+.btn-secondary,
+.btn-accent,
+.btn-danger {
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: background 0.3s ease, transform 0.2s ease;
+  text-decoration: none;
+  color: white;
+  text-align: center;
+}
+
+.btn-primary {
+  background-color: var(--rose-red);
+}
+
+.btn-primary:hover {
+  background-color: var(--rose-hover);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background-color: var(--purple-accent);
+}
+
+.btn-secondary:hover {
+  background-color: #be5af7;
+  transform: translateY(-2px);
+}
+
+.btn-accent {
+  background-color: #ff66c4;
+}
+
+.btn-accent:hover {
+  background-color: #ff85d1;
+  transform: translateY(-2px);
+}
+
+.btn-danger {
+  background-color: var(--danger);
+}
+
+.btn-danger:hover {
+  background-color: var(--danger-hover);
+  transform: translateY(-2px);
+}
+
+.message-box {
+  margin-top: 40px;
+  padding: 20px;
+  background-color: #27002c;
+  border-left: 5px solid var(--rose-red);
+  border-radius: 12px;
+}
+
+.message-title {
+  color: var(--rose-red);
+  margin-bottom: 10px;
+}
+
+.message-content {
+  margin-bottom: 15px;
+}
+
+.meta-info {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.blurred {
+  filter: blur(4px);
+}
+
+.no-messages {
+  text-align: center;
+  color: var(--muted);
+  font-style: italic;
+  margin-top: 60px;
+}

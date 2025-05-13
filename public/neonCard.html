@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Neon Border Glow</title>
+  <style>
+    /* Reset and base styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #0d0d0d;
+      color: #fff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Card container */
+    .neon-card {
+      position: relative;
+      width: 320px;
+      height: 200px;
+      background: #1a1a1a;
+      border-radius: 12px;
+      overflow: hidden;
+      transition: box-shadow 0.3s ease;
+    }
+
+    /* Neon glow overlay */
+    .neon-glow {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      background: radial-gradient(
+        circle at var(--x, 50%) var(--y, 50%),
+        rgba(0, 255, 255, 0.3),
+        transparent 40%
+      );
+      transition: background 0.2s ease;
+    }
+
+    /* Card content */
+    .content {
+      position: relative;
+      z-index: 1;
+      padding: 20px;
+    }
+
+    .content h2 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .content p {
+      font-size: 16px;
+      line-height: 1.4;
+    }
+  </style>
+</head>
+<body>
+  <div class="neon-card" id="neonCard">
+    <div class="neon-glow"></div>
+    <div class="content">
+      <h2>Neon Glow Card</h2>
+      <p>Hover over this card to see the neon border light up!</p>
+    </div>
+  </div>
+
+  <script>
+    const card = document.getElementById('neonCard');
+
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width) * 100;
+      const y = ((e.clientY - rect.top) / rect.height) * 100;
+      card.style.setProperty('--x', `${x}%`);
+      card.style.setProperty('--y', `${y}%`);
+    });
+
+    card.addEventListener('mouseleave', () => {
+      card.style.setProperty('--x', `50%`);
+      card.style.setProperty('--y', `50%`);
+    });
+  </script>
+</body>
+</html>

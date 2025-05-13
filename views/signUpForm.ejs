@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %></title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+
+  <body class="bg-gradient-to-br from-gray-950 via-slate-900 to-gray-800 text-white min-h-screen font-sans relative flex items-center justify-center px-4">
+
+    <!-- Floating Back Button -->
+    <a href="/" class="fixed top-6 left-6 z-50 bg-gray-800 hover:bg-gray-700 text-sm px-4 py-2 rounded-full shadow-lg border border-gray-700 transition">
+      ← Return to Club Home
+    </a>
+
+    <!-- Signup Card -->
+    <div class="w-full max-w-lg bg-gradient-to-tr from-slate-800 to-gray-900 p-8 rounded-2xl shadow-xl">
+      <h1 class="text-3xl font-bold text-center mb-2 text-transparent bg-clip-text bg-gradient-to-r from-rose-500 to-purple-400 drop-shadow-md">
+        🚀 Join JKR Club
+      </h1>
+      <p class="text-center text-sm text-gray-400 mb-6">Become a part of something mysterious</p>
+
+      <!-- Error Messages -->
+      <%- include("partials/errors.ejs") %>
+
+      <!-- Signup Form -->
+      <form action="/signup" method="POST" class="space-y-6">
+        <!-- Username -->
+        <div class="relative">
+          <input
+            type="text"
+            name="username"
+            id="username"
+            placeholder="Username"
+            value="<%= oldInput ? oldInput.username : '' %>"
+            required
+            class="peer w-full px-4 py-2 bg-gray-900 border border-gray-700 rounded focus:outline-none focus:ring-2 focus:ring-rose-500 placeholder-transparent text-sm"
+          />
+          <label for="username"
+            class="absolute left-3 -top-2 text-gray-400 text-xs peer-placeholder-shown:top-2.5 peer-placeholder-shown:text-sm peer-focus:-top-5 peer-focus:text-xs transition-all">
+            Username
+          </label>
+        </div>
+
+        <!-- Full Name -->
+        <div class="relative">
+          <input
+            type="text"
+            name="fullName"
+            id="fullName"
+            placeholder="Full Name"
+            value="<%= oldInput ? oldInput.fullName : '' %>"
+            required
+            class="peer w-full px-4 py-2 bg-gray-900 border border-gray-700 rounded focus:outline-none focus:ring-2 focus:ring-rose-500 placeholder-transparent text-sm"
+          />
+          <label for="fullName"
+            class="absolute left-3 -top-2 text-gray-400 text-xs peer-placeholder-shown:top-2.5 peer-placeholder-shown:text-sm peer-focus:-top-5 peer-focus:text-xs transition-all">
+            Full Name
+          </label>
+        </div>
+
+        <!-- Email -->
+        <div class="relative">
+          <input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="Email"
+            value="<%= oldInput ? oldInput.email : '' %>"
+            required
+            class="peer w-full px-4 py-2 bg-gray-900 border border-gray-700 rounded focus:outline-none focus:ring-2 focus:ring-rose-500 placeholder-transparent text-sm"
+          />
+          <label for="email"
+            class="absolute left-3 -top-2 text-gray-400 text-xs peer-placeholder-shown:top-2.5 peer-placeholder-shown:text-sm peer-focus:-top-5 peer-focus:text-xs transition-all">
+            Email Address
+          </label>
+        </div>
+
+        <!-- Password -->
+        <div class="relative">
+          <input
+            type="password"
+            name="password"
+            id="password"
+            placeholder="Password"
+            required
+            class="peer w-full px-4 py-2 bg-gray-900 border border-gray-700 rounded focus:outline-none focus:ring-2 focus:ring-rose-500 placeholder-transparent text-sm"
+          />
+          <label for="password"
+            class="absolute left-3 -top-2 text-gray-400 text-xs peer-placeholder-shown:top-2.5 peer-placeholder-shown:text-sm peer-focus:-top-5 peer-focus:text-xs transition-all">
+            Password
+          </label>
+        </div>
+
+        <!-- Confirm Password -->
+        <div class="relative">
+          <input
+            type="password"
+            name="confirmPassword"
+            id="confirmPassword"
+            placeholder="Confirm Password"
+            required
+            class="peer w-full px-4 py-2 bg-gray-900 border border-gray-700 rounded focus:outline-none focus:ring-2 focus:ring-rose-500 placeholder-transparent text-sm"
+          />
+          <label for="confirmPassword"
+            class="absolute left-3 -top-2 text-gray-400 text-xs peer-placeholder-shown:top-2.5 peer-placeholder-shown:text-sm peer-focus:-top-5 peer-focus:text-xs transition-all">
+            Confirm Password
+          </label>
+        </div>
+
+        <!-- Submit Button -->
+        <button
+          type="submit"
+          class="w-full py-2 bg-rose-600 hover:bg-rose-700 rounded shadow text-sm font-semibold transition">
+          🎫 Join the Club
+        </button>
+      </form>
+
+      <!-- Already have an account? -->
+      <p class="mt-6 text-center text-sm text-gray-500">
+        Already part of the club?
+        <a href="/login" class="text-purple-400 hover:underline">Login</a>
+      </p>
+    </div>
+  </body>
+</html>

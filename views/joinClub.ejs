@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title><%= title %></title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+
+  <body class="bg-gradient-to-br from-gray-950 via-slate-900 to-gray-800 text-white min-h-screen font-sans flex items-center justify-center px-4 relative">
+
+    <!-- Floating Back Button -->
+    <a href="/dashboard" class="fixed top-6 left-6 z-50 bg-gray-800 hover:bg-gray-700 text-sm px-4 py-2 rounded-full shadow-lg border border-gray-700 transition">
+      ← Return to Dashboard
+    </a>
+
+    <!-- Form Container -->
+    <div class="w-full max-w-md bg-gradient-to-tr from-slate-800 to-gray-900 p-8 rounded-2xl shadow-xl">
+      <h1 class="text-2xl font-bold text-center mb-4 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-rose-500 drop-shadow-md">
+        🎫 Enter Member Passcode
+      </h1>
+
+      <!-- Error Messages -->
+      <%- include("partials/errors") %>
+
+      <!-- Member Passcode Form -->
+      <form action="/join-the-club" method="POST" class="space-y-6">
+
+        <!-- Secret Input -->
+        <div class="relative">
+          <input
+            type="text"
+            name="secret"
+            id="secret"
+            placeholder="Secret Code => xyz123 🫠"
+            required
+            class="peer w-full px-4 py-2 bg-gray-900 border border-gray-700 rounded focus:outline-none focus:ring-2 focus:ring-purple-500 placeholder-transparent text-sm"
+          />
+          <label
+            for="secret"
+            class="absolute left-3 -top-2 text-gray-400 text-xs
+              peer-placeholder-shown:top-2.5 
+              peer-placeholder-shown:text-sm 
+              peer-focus:-top-5 
+              peer-focus:-left-3 
+              peer-focus:text-xs 
+              peer:not-placeholder-shown:-top-2 
+              peer:not-placeholder-shown:text-xs 
+              transition-all">
+            Secret Code
+          </label>
+        </div>
+
+        <!-- Submit Button -->
+        <button
+          type="submit"
+          class="w-full py-2 bg-purple-600 hover:bg-purple-700 rounded shadow text-sm font-semibold transition">
+          ✨ Become Member
+        </button>
+      </form>
+    </div>
+  </body>
+</html>

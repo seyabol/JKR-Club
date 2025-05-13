@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/styles/style2.css" />
+</head>
+<body class="neon-theme">
+  <div class="form-container">
+    <h1>🔑 Enter Admin Passcode</h1>
+    <h3 class="error"><%- include("partials/errors") %></h3>
+    <form action="/become-admin" method="POST">
+      <input type="text" name="secret" placeholder="Secret Code =>  admin42 🫠" required />
+      <button class="glow-button" type="submit">Become Admin</button>
+    </form>
+  </div>
+</body>
+</html>

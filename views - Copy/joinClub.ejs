@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/styles/style2.css" />
+</head>
+<body class="neon-theme">
+  <div class="form-container">
+    <h1>🔑 Enter Member Passcode</h1>
+    <h3 class="error"><%- include("partials/errors") %></h3>
+    <form action="/join-the-club" method="POST">
+      <input type="text" name="secret" placeholder="Secret Code =>  xyz123 🫠" required />
+      <button class="glow-button" type="submit">Become Member</button>
+    </form>
+  </div>
+</body>
+</html>

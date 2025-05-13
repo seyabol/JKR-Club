@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <title><%= title %></title>
+      <link rel="stylesheet" href="/styles/style2.css" />
+   </head>
+   <body class="neon-theme">
+      <div class="form-container">
+         <h1>Create a New Message 💬</h1>
+         <h3 class="error"><%- include("partials/errors") %></h3>
+
+         <form action="/create-message" method="POST">
+            <div class="input-group">
+               <input
+                  type="text"
+                  name="title"
+                  placeholder=" "
+                  value="<%= oldInput ? oldInput.title : '' %>"
+                  required
+               />
+               <label for="title">Title</label>
+            </div>
+
+            <div class="input-group">
+               <textarea
+                  name="content"
+                  class="char-count"
+                  placeholder=" "
+                  rows="6"
+                  maxlength="500"
+                  required
+               >
+<%= oldInput ? oldInput.content : '' %></textarea
+               >
+               <label for="content">Write your message here...</label>
+            </div>
+
+            <button class="glow-button" type="submit">Post</button>
+         </form>
+      </div>
+   </body>
+   <script>
+      const textarea = document.querySelector("textarea[name='content']");
+      const counter = document.createElement("div");
+      counter.className = "char-counter";
+      textarea.parentNode.appendChild(counter);
+
+      function updateCounter() {
+         const length = textarea.value.length;
+         counter.textContent = `${length}/500`;
+      }
+
+      textarea.addEventListener("input", updateCounter);
+      updateCounter();
+   </script>
+</html>

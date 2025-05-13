@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title><%= title %></title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+
+  <body class="bg-gradient-to-br from-gray-950 via-slate-900 to-gray-800 text-white min-h-screen font-sans flex items-center justify-center px-4 relative">
+
+    <!-- Floating Back Button -->
+    <a href="/dashboard" class="fixed top-6 left-6 z-50 bg-gray-800 hover:bg-gray-700 text-sm px-4 py-2 rounded-full shadow-lg border border-gray-700 transition">
+      ← Return to Dashboard
+    </a>
+
+    <!-- Form Container -->
+    <div class="w-full max-w-2xl bg-gradient-to-tr from-slate-800 to-gray-900 p-8 rounded-2xl shadow-xl">
+      <h1 class="text-3xl font-bold text-center mb-4 text-transparent bg-clip-text bg-gradient-to-r from-rose-500 to-purple-400 drop-shadow-md">
+        💬 Create a New Message
+      </h1>
+
+      <!-- Display Errors -->
+      <%- include("partials/errors") %>
+
+      <!-- Form -->
+      <form action="/create-message" method="POST" class="space-y-6">
+
+        <!-- Title Field -->
+        <div class="relative">
+          <input
+            type="text"
+            name="title"
+            id="title"
+            placeholder="Title"
+            value="<%= oldInput ? oldInput.title : '' %>"
+            required
+            class="peer w-full px-4 py-2 bg-gray-900 border border-gray-700 rounded focus:outline-none focus:ring-2 focus:ring-rose-500 placeholder-transparent text-sm"
+          />
+          <label
+            for="title"
+            class="absolute left-3 -top-2 text-gray-400 text-xs
+              peer-placeholder-shown:top-2.5 
+              peer-placeholder-shown:text-sm 
+              peer-focus:-top-5 
+              peer-focus:text-xs 
+              peer:not-placeholder-shown:-top-2 
+              peer:not-placeholder-shown:text-xs 
+              transition-all">
+            Title
+          </label>
+        </div>
+
+        <!-- Content Textarea -->
+        <div class="relative">
+          <textarea
+            name="content"
+            id="content"
+            rows="6"
+            maxlength="500"
+            placeholder="Write your message here..."
+            required
+            class="peer w-full px-4 py-2 bg-gray-900 border border-gray-700 rounded resize-none focus:outline-none focus:ring-2 focus:ring-rose-500 placeholder-transparent text-sm"
+          ><%= oldInput ? oldInput.content : '' %></textarea>
+          
+          <label
+            for="content"
+            class="absolute left-3 -top-2 text-gray-400 text-xs 
+              peer-placeholder-shown:top-2.5 
+              peer-placeholder-shown:text-sm 
+              peer-focus:-top-5
+              peer-focus:text-xs 
+              peer:not-placeholder-shown:-top-2 
+              peer:not-placeholder-shown:text-xs 
+              transition-all">
+            Write your message here...
+          </label>
+
+          <!-- Character Counter -->
+          <div id="charCounter" class="text-right text-xs text-gray-500 mt-1 pr-1">
+            0/500
+          </div>
+        </div>
+
+        <!-- Submit -->
+        <button
+          class="w-full py-2 bg-rose-600 hover:bg-rose-700 rounded shadow text-sm font-semibold transition"
+          type="submit">
+          🚀 Post Message
+        </button>
+      </form>
+    </div>
+
+    <!-- Character Counter Script -->
+    <script>
+      const textarea = document.querySelector("#content");
+      const counter = document.querySelector("#charCounter");
+
+      function updateCounter() {
+        const length = textarea.value.trim().length;
+        counter.textContent = `${length}/500`;
+      }
+
+      textarea.addEventListener("input", updateCounter);
+      window.addEventListener("DOMContentLoaded", updateCounter);
+    </script>
+  </body>
+</html>

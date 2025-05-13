@@ -1,0 +1,125 @@
+body.neon-theme {
+  background: #000;
+  font-family: 'Orbitron', sans-serif;
+  color: rgb(248, 247, 230);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  flex-direction: column;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.form-container {
+  background: rgba(0, 0, 0, 0.85);
+  padding: 40px;
+  border-radius: 14px;
+  box-shadow: 0 0 30px rgb(32, 44, 95);
+  width: 100%;
+  max-width: 500px;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-container h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  text-shadow: 0 0 10px rgb(32, 44, 95), 0 0 20px rgb(32, 44, 95);
+  color: rgb(82, 98, 168);
+}
+
+.form-container h3.error {
+  color: rgb(192, 57, 57);
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 25px;
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-group input {
+  width: 100%;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  padding: 14px;
+  border: 2px solid rgb(32, 44, 95);
+  border-radius: 10px;
+  background: #111;
+  color: rgb(82, 98, 168);
+  font-size: 16px;
+  box-shadow: 0 0 12px rgb(32, 44, 95) inset;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input::placeholder {
+  color: rgb(82, 98, 168);
+  opacity: 0.6;
+}
+
+input:hover,
+input:focus {
+  border-color: #f0f;
+  box-shadow: 0 0 12px #f0f, 0 0 20px #f0f inset;
+  outline: none;
+}
+
+.glow-button {
+  width: 100%;
+  max-width: 400px;
+  padding: 14px;
+  background-color: #000;
+  border: 2px solid rgb(32, 44, 95);
+  border-radius: 10px;
+  color: rgb(82, 98, 168);
+  font-size: 16px;
+  cursor: pointer;
+  text-shadow: 0 0 4px rgb(32, 44, 95);
+  box-shadow: 0 0 10px rgb(32, 44, 95), 0 0 40px rgb(32, 44, 95) inset;
+  transition: all 0.3s ease;
+}
+
+.glow-button:hover {
+  background-color: rgb(32, 44, 95);
+  color: #000;
+  border-color: #f0f;
+  box-shadow: 0 0 25px #f0f, 0 0 60px #f0f inset;
+}
+
+body::before {
+  content: "";
+  background: url('/images/smoke.gif') center center / cover no-repeat;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  opacity: 0.07;
+  pointer-events: none;
+}
+
+/* Responsive Tweaks */
+@media (max-width: 600px) {
+  .form-container {
+    padding: 30px 20px;
+  }
+
+  .form-group,
+  .glow-button {
+    max-width: 100%;
+  }
+}
