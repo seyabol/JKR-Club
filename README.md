@@ -44,3 +44,26 @@
 | EJS              | Templating engine                 |
 | connect-flash    | Flash messaging                   |
 | connect-pg-simple| PostgreSQL session storage        |
+
+---
+
+## 📸 Screenshots
+
+### 🔐 Sign-Up Form
+![Sign-Up Form](public/screenshots/Sign-up%20form.png)
+
+### 🏠 Home Page
+![Home Page](public/screenshots/home.png)
+
+### 🎛️ Dashboard
+![Dashboard](public/screenshots/dashboard.png)
+
+### 📝 Create Message
+![Create Message](public/screenshots/create-message.png)
+
+### 🌟 Admin Passcode Form
+![Admin Passcode Form](public/screenshots/admin-passcode-form.png)
+
+### 🗑️ Admin Deleting Message
+![Admin Deleting Message](public/screenshots/admin-deleting-message.png)
+
