@@ -42,6 +42,9 @@ async function main() {
   console.log("seeding...");
   const client = new Client({
     connectionString: process.env.DB_URI,
+    ssl: {
+         rejectUnauthorized: false,
+      },
   });
   await client.connect();
   console.log("connected to pg db");
