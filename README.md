@@ -44,7 +44,7 @@
 | EJS              | Templating engine                 |
 | connect-flash    | Flash messaging                   |
 | connect-pg-simple| PostgreSQL session storage        |
-
+| express-validator| Sanitizing and validating forms   |
 ---
 
 ## 📸 Screenshots
