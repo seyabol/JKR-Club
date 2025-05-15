@@ -44,7 +44,10 @@ async function updateMembership(userId) {
 }
 
 async function updateAdmin(userId) {
-   await pool.query("UPDATE users SET is_admin=true WHERE id = $1", [userId]);
+   await pool.query(
+      "UPDATE users SET is_admin = true, is_member = true WHERE id = $1",
+      [userId]
+   );
 }
 
 async function insertMessage(title, content, author_id) {
@@ -76,7 +79,8 @@ async function deleteMessageById(messageId) {
 }
 
 async function searchMessages(searchTerm) {
-   const result = await pool.query(`
+   const result = await pool.query(
+      `
     SELECT 
       messages.id,
       messages.title,
@@ -90,9 +94,11 @@ async function searchMessages(searchTerm) {
       OR LOWER(messages.content) LIKE LOWER('%' || $1 || '%')
       OR LOWER(messages.title) LIKE LOWER('%' || $1 || '%')
     ORDER BY messages.created_at DESC
-  `, [searchTerm]);
+  `,
+      [searchTerm]
+   );
 
-  return result.rows
+   return result.rows;
 }
 
 module.exports = {
@@ -105,5 +111,5 @@ module.exports = {
    insertMessage,
    getAllMessagesWithAuthors,
    deleteMessageById,
-   searchMessages
+   searchMessages,
 };
